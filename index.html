@@ -554,7 +554,7 @@
                     }
                 });
 
-            } catch(e) { console.log("Audience Join Error:", e); }
+            } catch(e) { console.log("Audience Join Error:", e); window.lastAgoraError = (e && (e.code || e.message)) || String(e); try { showToast("Agora gagal: " + window.lastAgoraError); } catch(_) {} }
         }
 
         onAuthStateChanged(auth, async (user) => {
@@ -1713,6 +1713,7 @@
 
                 const log = $('diag-log');
                 log.innerHTML = `[SYS] Diagnostic opened at ${new Date().toLocaleTimeString()}\n` + log.innerHTML;
+                if (window.lastAgoraError) log.innerHTML = `[ERR] Agora: ${window.lastAgoraError}\n` + log.innerHTML;
             }
         };
 
