@@ -542,7 +542,7 @@
 
                 localAgoraUid = Math.floor(Math.random() * 100000000);
                 
-                await agoraClient.join(AGORA_APP_ID, AGORA_CHANNEL, AGORA_TOKEN, localAgoraUid);
+                await agoraClient.join(AGORA_APP_ID, AGORA_CHANNEL, AGORA_TOKEN, localAgoraUid); window.lastAgoraError = null;
                 await agoraClient.setClientRole("audience");
                 isAudienceMode = true;
                 $('live-listener-bar').classList.remove('hidden');
